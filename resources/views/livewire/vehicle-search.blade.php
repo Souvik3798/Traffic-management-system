@@ -24,19 +24,19 @@
                         <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
                         </svg>
-                        <span class="font-semibold">Signal:</span> {{ $output['signal'] }}
+                        <span class="font-semibold">Signal: </span> {{ $output['signal'] }}
                     </li>
                     <li class="flex items-center">
                         <svg class="h-5 w-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm2-11H8v2h4V7zm0 4H8v2h4v-2z" />
                         </svg>
-                        <span class="font-semibold">Date:</span> {{ $output['date'] }}
+                        <span class="font-semibold">Date: </span> {{ date('d m, Y', strtotime($output['date'])) }}
                     </li>
                     <li class="flex items-center">
                         <svg class="h-5 w-5 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-7h2v5h-2v-5zm0-4h2v2h-2V7z" />
                         </svg>
-                        <span class="font-semibold">Time:</span> {{ $output['time'] }}
+                        <span class="font-semibold">Time: </span> {{ date('h:i A', strtotime($output['time'])) }}
                     </li>
                 </ul>
             @endif

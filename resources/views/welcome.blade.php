@@ -35,7 +35,7 @@
         </div>
 
         <!-- Second Grid: Region Traffic -->
-        <div class="grid grid-cols-1 gap-8">
+        <div class="grid grid-cols-1 gap-8 mb-8">
             <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center">
                 <div class="w-full text-center">
                     <h2 class="text-2xl font-semibold text-gray-700 mb-4">Region Traffic</h2>
@@ -45,6 +45,43 @@
                 </div>
             </div>
         </div>
+
+        <!-- Third Grid: New Modules -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Module 4: Track Vehicle Positions -->
+            <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center">
+                <div class="w-full text-center">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Track Vehicle Positions</h2>
+                    <div class="flex justify-center">
+                        <livewire:track-vehicle-positions />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 5: Check Region for Special Vehicle Movement -->
+            <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center">
+                <div class="w-full text-center">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Check Region for Special Vehicle Movement</h2>
+                    <div class="flex justify-center">
+                        <livewire:check-special-movement />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+            <!-- Module 6: Set Fastest Route to Destination Signal -->
+            <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center">
+                <div class="w-full text-center">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Set Fastest Route</h2>
+                    <div class="flex justify-center">
+                        <div class="w-full max-w-screen-2xl">
+                            <livewire:set-fastest-route />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 

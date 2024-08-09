@@ -19,16 +19,26 @@ class VehicleSearch extends Component
         $this->validate();
 
         // Load JSON data from the file
-        $trafficData = json_decode(Storage::disk('public')->get('traffic-data.json'), true);
+        $trafficData = json_decode(Storage::disk('public')->get('traffic_management_data.json'), true);
 
         // Find the vehicle data based on the registration number
-        $vehicleData = $trafficData['vehicles'][$this->vehicleReg] ?? null;
+        $vehicleData = $trafficData['vehicles'][$this->vehicleReg]['positions'] ?? null;
 
         if ($vehicleData) {
+            // Sort the positions by date and time in descending order to get the latest record
+            usort($vehicleData, function ($a, $b) {
+                $dateTimeA = strtotime($a['date'] . ' ' . $a['time']);
+                $dateTimeB = strtotime($b['date'] . ' ' . $b['time']);
+                return $dateTimeB <=> $dateTimeA;
+            });
+
+            // Get the latest record
+            $latestRecord = $vehicleData[0];
+
             $this->output = [
-                'signal' => $vehicleData['signal'],
-                'date' => $vehicleData['date'],
-                'time' => $vehicleData['time'],
+                'signal' => $latestRecord['location'],
+                'date' => $latestRecord['date'],
+                'time' => $latestRecord['time'],
             ];
         } else {
             $this->output = ['error' => 'Vehicle not found'];
