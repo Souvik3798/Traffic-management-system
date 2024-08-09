@@ -13,7 +13,13 @@
         <div class="mt-4">
             <h3 class="font-semibold text-gray-700">Vehicle Positions:</h3>
             <ul class="list-disc pl-5">
-                @foreach ($positions as $position)
+                @php
+                    // Sort positions by date and time in descending order
+                    $sortedPositions = collect($positions)->sortByDesc(function ($position) {
+                        return strtotime($position['date'] . ' ' . $position['time']);
+                    });
+                @endphp
+                @foreach ($sortedPositions as $position)
                     <li class="flex items-start p-3 mb-2 bg-gray-100 rounded hover:bg-gray-200">
                         <div class="mr-4">
                             <i class="fas fa-calendar-alt text-blue-500"></i>
