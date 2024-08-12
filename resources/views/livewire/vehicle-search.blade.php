@@ -1,44 +1,44 @@
-<div class="p-4 bg-white shadow rounded">
-    <input type="text" wire:model="vehicleReg" placeholder="e.g., AN01A1234"
-        class="border p-2 rounded w-full md:w-2/3 focus:ring focus:ring-blue-200">
-    @error('vehicleReg')
-        <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
-    @enderror
-    <button wire:click="search"
-        class="bg-blue-500 text-white p-2 rounded ml-2 hover:bg-blue-600 transition-colors">Submit</button>
+<div class="p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0">
+        <input type="text" wire:model.lazy="vehicleReg" placeholder="e.g., AN01A1234"
+            class="border border-gray-300 p-3 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ease-in-out shadow-sm">
+    </div>
+
+    <div class="mt-4">
+        <button wire:click="search"
+            class="bg-gradient-to-r from-blue-400 to-blue-600 text-white py-2 px-6 w-full rounded-lg hover:from-blue-500 hover:to-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md flex items-center justify-center">
+            <svg wire:loading wire:target="search" class="animate-spin h-5 w-5 text-white mr-2"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6.5v-2m0 13v2m4.3-4.3l1.4 1.4M6.3 6.3L4.9 4.9m10.1 10.1l1.4 1.4M6.3 17.7l1.4-1.4"></path>
+            </svg>
+            <span>Submit</span>
+        </button>
+    </div>
 
     @if ($output)
-        <div class="mt-4 bg-gray-50 p-4 rounded shadow-inner">
+        <div class="mt-6 bg-gray-50 p-5 rounded-lg shadow-inner transition-all duration-300 ease-in-out">
             @if (isset($output['error']))
-                <p class="text-red-500 text-sm font-semibold flex items-center">
-                    <svg class="h-5 w-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M18 8a8 8 0 11-16 0 8 8 0 0116 0zm-9-3a1 1 0 00-2 0v4a1 1 0 102 0V5zm0 6a1 1 0 100 2 1 1 0 000-2z"
-                            clip-rule="evenodd" />
-                    </svg>
+                <p class="text-red-500 text-lg font-semibold flex items-center">
+                    <span class="text-red-500 mr-2">❌</span>
                     {{ $output['error'] }}
                 </p>
             @else
-                <ul class="list-disc list-inside space-y-2">
-                    <li class="flex items-center">
-                        <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                        </svg>
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <span class="text-green-500 mr-2">🚦</span>
                         <span class="font-semibold">Signal: </span> {{ $output['signal'] }}
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="h-5 w-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm2-11H8v2h4V7zm0 4H8v2h4v-2z" />
-                        </svg>
-                        <span class="font-semibold">Date: </span> {{ date('d m, Y', strtotime($output['date'])) }}
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="h-5 w-5 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-7h2v5h-2v-5zm0-4h2v2h-2V7z" />
-                        </svg>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-blue-500 mr-2">📅</span>
+                        <span class="font-semibold">Date: </span> {{ date('d M, Y', strtotime($output['date'])) }}
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-yellow-500 mr-2">⏰</span>
                         <span class="font-semibold">Time: </span> {{ date('h:i A', strtotime($output['time'])) }}
-                    </li>
-                </ul>
+                    </div>
+                </div>
             @endif
         </div>
     @endif

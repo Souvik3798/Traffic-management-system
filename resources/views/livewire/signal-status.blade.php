@@ -1,24 +1,23 @@
-<div class="p-4 bg-white shadow rounded">
-    <input type="text" wire:model="signalNumber" placeholder="Enter Signal Number"
-        class="border p-2 rounded w-full md:w-2/3 focus:ring focus:ring-blue-200">
-    <button wire:click="search"
-        class="bg-blue-500 text-white p-2 rounded ml-2 hover:bg-blue-600 transition-colors">Submit</button>
+<div class="p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
+        <input type="text" wire:model.lazy="signalNumber" placeholder="Enter Signal Number"
+            class="border border-gray-300 p-3 rounded-lg w-full md:w-auto flex-grow focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ease-in-out shadow-sm">
+        <button wire:click="search"
+            class="bg-gradient-to-r from-blue-400 to-blue-600 text-white py-3 px-6 rounded-lg hover:from-blue-500 hover:to-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-md flex items-center justify-center">
+            <span>Submit</span>
+        </button>
+    </div>
 
     @if (!empty($lanes))
-        <div class="mt-4 bg-gray-50 p-4 rounded shadow-inner">
-            <h4 class="font-bold text-lg mb-2 flex items-center">
-                <svg class="h-6 w-6 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                </svg>
+        <div class="mt-6 bg-gray-50 p-5 rounded-lg shadow-inner">
+            <h4 class="font-bold text-lg mb-4 flex items-center">
+                🚦
                 Signal {{ $signalNumber }} Status
             </h4>
-            <ul class="list-disc ml-5 space-y-2">
+            <ul class="list-disc ml-5 space-y-3">
                 @foreach ($lanes as $lane => $count)
                     <li class="flex items-center">
-                        <svg class="h-5 w-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                        </svg>
-                        <span>{{ $lane }}: <span class="font-semibold">{{ $count }}
+                        <span> 🛣️ {{ $lane }}: <span class="font-semibold"> 🚘{{ $count }}
                                 vehicles</span></span>
                     </li>
                 @endforeach
@@ -26,12 +25,8 @@
         </div>
     @else
         @if ($signalNumber)
-            <p class="mt-4 text-red-500 flex items-center">
-                <svg class="h-5 w-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M18 8a8 8 0 11-16 0 8 8 0 0116 0zm-9-3a1 1 0 00-2 0v4a1 1 0 102 0V5zm0 6a1 1 0 100 2 1 1 0 000-2z"
-                        clip-rule="evenodd" />
-                </svg>
+            <p class="mt-6 text-red-500 flex items-center">
+                🚦
                 No data available for Signal {{ $signalNumber }}
             </p>
         @endif

@@ -1,26 +1,28 @@
-<div class="p-4 bg-white shadow rounded">
-    <select wire:model="region" class="border p-2 rounded w-full md:w-2/3 focus:ring focus:ring-blue-200">
-        <option value="">Select Region</option>
-        @foreach ($regions as $regionKey)
-            <option value="{{ $regionKey }}">{{ ucwords(str_replace('_', ' ', $regionKey)) }}</option>
-        @endforeach
-    </select>
-    <button wire:click="search"
-        class="bg-blue-500 text-white p-2 rounded ml-2 hover:bg-blue-600 transition-colors">Submit</button>
+<div class="p-6 bg-white rounded-md">
+    <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
+        <select wire:model="region"
+            class="border border-gray-300 p-3 rounded-md w-full md:w-2/3 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 ease-in-out shadow-sm">
+            <option value="">🌍 Select Region</option>
+            @foreach ($regions as $regionKey)
+                <option value="{{ $regionKey }}">{{ ucwords(str_replace('_', ' ', $regionKey)) }}</option>
+            @endforeach
+        </select>
+        <button wire:click="search"
+            class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 px-6 rounded-md shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 ease-in-out overflow-hidden">
+            <span>Submit</span>
+        </button>
+    </div>
 
     @if ($signals)
-        <div class="mt-4">
-            <h4 class="font-bold text-lg mb-4">Traffic Data for {{ ucwords(str_replace('_', ' ', $region)) }}</h4>
+        <div class="mt-6">
+            <h4 class="font-semibold text-lg mb-4">🚦 Traffic Data for {{ ucwords(str_replace('_', ' ', $region)) }}</h4>
 
-            <!-- Display signals based on congestion level -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Red Congestion Box -->
-                <div class="p-4 border-2 border-red-500 rounded bg-red-50">
-                    <h5 class="font-bold text-red-500 flex items-center">
-                        <svg class="h-6 w-6 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                        </svg>
-                        High Congestion
+                <!-- High Congestion -->
+                <div
+                    class="p-4 border-l-4 border-red-500 rounded-md bg-gradient-to-br from-red-200 via-red-100 to-red-50">
+                    <h5 class="font-medium text-red-700 mb-3 flex items-center">
+                        🚨 High Congestion
                     </h5>
                     @foreach ($signals as $signalName => $signalData)
                         @php
@@ -29,18 +31,13 @@
                             );
                         @endphp
                         @if ($redLanes->isNotEmpty())
-                            <div class="mt-4 bg-white p-3 rounded shadow">
-                                <h6 class="font-bold">{{ $signalName }}</h6>
-                                <ul class="list-none ml-5 space-y-1">
+                            <div class="mt-3 bg-white p-3 rounded-md shadow-sm">
+                                <h6 class="font-medium">🚦 {{ $signalName }}</h6>
+                                <ul class="list-none ml-5 mt-2 space-y-2">
                                     @foreach ($redLanes as $laneName => $laneData)
-                                        <li class="flex items-center">
-                                            <svg class="h-5 w-5 text-red-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                                            </svg>
-                                            {{ $laneName }} - <strong>{{ $laneData['vehicles'] }}
-                                                vehicles</strong>
+                                        <li class="text-red-700 flex items-center">
+                                            🚗 <span class="ml-2">{{ $laneName }} -
+                                                <strong>{{ $laneData['vehicles'] }} vehicles</strong></span>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -49,13 +46,11 @@
                     @endforeach
                 </div>
 
-                <!-- Yellow Congestion Box -->
-                <div class="p-4 border-2 border-yellow-500 rounded bg-yellow-50">
-                    <h5 class="font-bold text-yellow-500 flex items-center">
-                        <svg class="h-6 w-6 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                        </svg>
-                        Medium Congestion
+                <!-- Medium Congestion -->
+                <div
+                    class="p-4 border-l-4 border-yellow-500 rounded-md bg-gradient-to-br from-yellow-200 via-yellow-100 to-yellow-50">
+                    <h5 class="font-medium text-yellow-700 mb-3 flex items-center">
+                        ⚠️ Medium Congestion
                     </h5>
                     @foreach ($signals as $signalName => $signalData)
                         @php
@@ -64,18 +59,13 @@
                             );
                         @endphp
                         @if ($yellowLanes->isNotEmpty())
-                            <div class="mt-4 bg-white p-3 rounded shadow">
-                                <h6 class="font-bold">{{ $signalName }}</h6>
-                                <ul class="list-none ml-5 space-y-1">
+                            <div class="mt-3 bg-white p-3 rounded-md shadow-sm">
+                                <h6 class="font-medium">🚦 {{ $signalName }}</h6>
+                                <ul class="list-none ml-5 mt-2 space-y-2">
                                     @foreach ($yellowLanes as $laneName => $laneData)
-                                        <li class="flex items-center">
-                                            <svg class="h-5 w-5 text-yellow-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                                            </svg>
-                                            {{ $laneName }} - <strong>{{ $laneData['vehicles'] }}
-                                                vehicles</strong>
+                                        <li class="text-yellow-700 flex items-center">
+                                            🚗 <span class="ml-2">{{ $laneName }} -
+                                                <strong>{{ $laneData['vehicles'] }} vehicles</strong></span>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -84,13 +74,11 @@
                     @endforeach
                 </div>
 
-                <!-- Green Congestion Box -->
-                <div class="p-4 border-2 border-green-500 rounded bg-green-50">
-                    <h5 class="font-bold text-green-500 flex items-center">
-                        <svg class="h-6 w-6 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                        </svg>
-                        Low Congestion
+                <!-- Low Congestion -->
+                <div
+                    class="p-4 border-l-4 border-green-500 rounded-md bg-gradient-to-br from-green-200 via-green-100 to-green-50">
+                    <h5 class="font-medium text-green-700 mb-3 flex items-center">
+                        ✅ Low Congestion
                     </h5>
                     @foreach ($signals as $signalName => $signalData)
                         @php
@@ -99,18 +87,13 @@
                             );
                         @endphp
                         @if ($greenLanes->isNotEmpty())
-                            <div class="mt-4 bg-white p-3 rounded shadow">
-                                <h6 class="font-bold">{{ $signalName }}</h6>
-                                <ul class="list-none ml-5 space-y-1">
+                            <div class="mt-3 bg-white p-3 rounded-md shadow-sm">
+                                <h6 class="font-medium">🚦 {{ $signalName }}</h6>
+                                <ul class="list-none ml-5 mt-2 space-y-2">
                                     @foreach ($greenLanes as $laneName => $laneData)
-                                        <li class="flex items-center">
-                                            <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v4h2V7zm0 6H9v2h2v-2z" />
-                                            </svg>
-                                            {{ $laneName }} - <strong>{{ $laneData['vehicles'] }}
-                                                vehicles</strong>
+                                        <li class="text-green-700 flex items-center">
+                                            🚗 <span class="ml-2">{{ $laneName }} -
+                                                <strong>{{ $laneData['vehicles'] }} vehicles</strong></span>
                                         </li>
                                     @endforeach
                                 </ul>
