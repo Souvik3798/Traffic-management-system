@@ -11,14 +11,19 @@
     @if (!empty($lanes))
         <div class="mt-6 bg-gray-50 p-5 rounded-lg shadow-inner">
             <h4 class="font-bold text-lg mb-4 flex items-center">
-                🚦
-                Signal {{ $signalNumber }} Status
+                🚦 Signal {{ $signalNumber }} Status
             </h4>
             <ul class="list-disc ml-5 space-y-3">
-                @foreach ($lanes as $lane => $count)
+                @foreach ($lanes as $lane => $details)
                     <li class="flex items-center">
-                        <span> 🛣️ {{ $lane }}: <span class="font-semibold"> 🚘{{ $count }}
-                                vehicles</span></span>
+                        <span> 🛣️ {{ $lane }}:
+                            <span class="font-semibold">
+                                🚘 {{ $details['vehicles'] ?? 0 }} vehicles
+                            </span>
+                            <span class="ml-2">
+                                🧭 Direction: {{ $details['direction'] ?? 'Unknown' }}
+                            </span>
+                        </span>
                     </li>
                 @endforeach
             </ul>
@@ -26,8 +31,7 @@
     @else
         @if ($signalNumber)
             <p class="mt-6 text-red-500 flex items-center">
-                🚦
-                No data available for Signal {{ $signalNumber }}
+                🚦 No data available for Signal {{ $signalNumber }}
             </p>
         @endif
     @endif

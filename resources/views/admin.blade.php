@@ -20,18 +20,6 @@
             background: linear-gradient(135deg, #6a89cc, #b8e994);
         }
 
-        .gradient-bg-4 {
-            background: linear-gradient(135deg, #ff6b81, #f06595);
-        }
-
-        .gradient-bg-5 {
-            background: linear-gradient(135deg, #f78fb3, #e77f67);
-        }
-
-        .gradient-bg-6 {
-            background: linear-gradient(135deg, #63cdda, #3dc1d3);
-        }
-
         .header {
             background: #2e86de;
             color: white;
@@ -124,24 +112,6 @@
         .form-group button:hover {
             background-color: #2165b5;
         }
-
-        .congestion-level {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 5px;
-        }
-
-        .high-congestion {
-            background-color: #ffcccc;
-        }
-
-        .medium-congestion {
-            background-color: #fff2cc;
-        }
-
-        .low-congestion {
-            background-color: #ccffcc;
-        }
     </style>
 </head>
 
@@ -154,105 +124,55 @@
 
     <main>
         <div class="form-container">
-            <!-- Module 1: Vehicle Registration and Location History -->
+            <!-- Vehicle Number -->
             <div class="gradient-bg-1 p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-2xl font-semibold text-white mb-4">🔍 Vehicle Registration and Location History</h2>
+                <h2 class="text-2xl font-semibold text-white mb-4">🚗 Vehicle Number</h2>
                 <form class="form-group">
-                    <label for="vehicleReg">Vehicle Registration Number</label>
-                    <input type="text" id="vehicleReg" placeholder="e.g., AN01A1234">
-
-                    <label for="locationHistory">Location History (Enter multiple records)</label>
-                    <textarea id="locationHistory" rows="5"
-                        placeholder="Date, Time, Signal Number (e.g., 2024-08-12, 14:30, Signal 5)"></textarea>
-
-                    <button type="submit">Submit Vehicle Data</button>
+                    <label for="vehicleNumber">Vehicle Number</label>
+                    <input type="text" id="vehicleNumber" placeholder="e.g., AN01A1234">
+                    <button type="submit">Submit Vehicle Number</button>
                 </form>
             </div>
 
-            <!-- Module 2: Signal and Lane Data -->
+            <!-- Signal and Incoming Lane -->
             <div class="gradient-bg-2 p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-2xl font-semibold text-white mb-4">📊 Signal and Lane Data</h2>
+                <h2 class="text-2xl font-semibold text-white mb-4">🚦 Signal and Incoming Lane</h2>
                 <form class="form-group">
                     <label for="signalNumber">Signal Number</label>
                     <input type="text" id="signalNumber" placeholder="Enter Signal Number">
 
-                    <label for="laneData">Lane Data (Enter multiple lanes)</label>
-                    <textarea id="laneData" rows="5" placeholder="Lane Name, Total Vehicles (e.g., Lane 1, 20 vehicles)"></textarea>
+                    <label for="incomingLaneNumber">Incoming Lane Number</label>
+                    <input type="text" id="incomingLaneNumber" placeholder="Enter Incoming Lane Number">
 
-                    <button type="submit">Submit Signal Data</button>
+                    <label for="incomingLaneName">Incoming Lane Name</label>
+                    <input type="text" id="incomingLaneName" placeholder="Enter Incoming Lane Name">
+
+                    <button type="submit">Submit Signal and Incoming Lane</button>
                 </form>
+
             </div>
 
-            <!-- Module 3: Region and Congestion Levels -->
+            <!-- Signal Number and Address -->
             <div class="gradient-bg-3 p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-2xl font-semibold text-white mb-4">🌍 Region and Congestion Levels</h2>
+                <h2 class="text-2xl font-semibold text-white mb-4">📍 Signal Number and Address</h2>
                 <form class="form-group">
-                    <label for="regionName">Region Name</label>
-                    <input type="text" id="regionName" placeholder="Enter Region Name">
-
-                    <!-- High Congestion -->
-                    <div class="congestion-level high-congestion">
-                        <h3 class="text-lg font-semibold text-red-800 mb-2">High Congestion</h3>
-                        <label for="highCongestionSignal">Signal Number (High Congestion)</label>
-                        <input type="text" id="highCongestionSignal" placeholder="Enter Signal Number">
-                        <label for="highCongestionLaneData">Lane Data (High Congestion)</label>
-                        <textarea id="highCongestionLaneData" rows="3" placeholder="Lane Name, Total Vehicles"></textarea>
-                    </div>
-
-                    <!-- Medium Congestion -->
-                    <div class="congestion-level medium-congestion">
-                        <h3 class="text-lg font-semibold text-yellow-800 mb-2">Medium Congestion</h3>
-                        <label for="mediumCongestionSignal">Signal Number (Medium Congestion)</label>
-                        <input type="text" id="mediumCongestionSignal" placeholder="Enter Signal Number">
-                        <label for="mediumCongestionLaneData">Lane Data (Medium Congestion)</label>
-                        <textarea id="mediumCongestionLaneData" rows="3" placeholder="Lane Name, Total Vehicles"></textarea>
-                    </div>
-
-                    <!-- Low Congestion -->
-                    <div class="congestion-level low-congestion">
-                        <h3 class="text-lg font-semibold text-green-800 mb-2">Low Congestion</h3>
-                        <label for="lowCongestionSignal">Signal Number (Low Congestion)</label>
-                        <input type="text" id="lowCongestionSignal" placeholder="Enter Signal Number">
-                        <label for="lowCongestionLaneData">Lane Data (Low Congestion)</label>
-                        <textarea id="lowCongestionLaneData" rows="3" placeholder="Lane Name, Total Vehicles"></textarea>
-                    </div>
-
-                    <button type="submit">Submit Region Data</button>
+                    <label for="signalAddress">Signal Number</label>
+                    <input type="text" id="signalAddress" placeholder="Signal Number">
+                    <label for="signalAddress">Address</label>
+                    <textarea placeholder="Address"></textarea>
+                    <button type="submit">Submit Signal Address</button>
                 </form>
             </div>
 
-            <!-- Module 5: Vehicle History -->
-            <div class="gradient-bg-5 p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-2xl font-semibold text-white mb-4">📜 Vehicle History</h2>
+            <!-- Lane Number and Signal Time Adjustment -->
+            <div class="gradient-bg-1 p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-2xl font-semibold text-white mb-4">⏲️ Lane Number and Signal Time Adjustment</h2>
                 <form class="form-group">
-                    <label for="vehicleHistoryReg">Vehicle Registration Number</label>
-                    <input type="text" id="vehicleHistoryReg" placeholder="e.g., AN01A1234">
-
-                    <label for="vehicleHistory">Last 5 Locations</label>
-                    <textarea id="vehicleHistory" rows="5"
-                        placeholder="Date, Time, Signal Number (e.g., 2024-08-12, 14:30, Signal 5)"></textarea>
-
-                    <button type="submit">Submit Vehicle History</button>
-                </form>
-            </div>
-
-            <!-- Module 6: Special Vehicle Information -->
-            <div class="gradient-bg-6 p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-2xl font-semibold text-white mb-4">🚨 Special Vehicle Information</h2>
-                <form class="form-group">
-                    <label for="regionNameSpecial">Region Name</label>
-                    <input type="text" id="regionNameSpecial" placeholder="Enter Region Name">
-
-                    <label for="laneNumber">Lane Number</label>
-                    <input type="text" id="laneNumber" placeholder="Enter Lane Number">
-
-                    <label for="vehicleType">Vehicle Type</label>
-                    <select id="vehicleType">
-                        <option value="ambulance">Ambulance</option>
-                        <option value="vip">VIP</option>
-                    </select>
-
-                    <button type="submit">Submit Special Vehicle Info</button>
+                    <label for="laneTimeAdjustment">Lane Number</label>
+                    <input type="text" id="laneTimeAdjustment" placeholder="Lane Number">
+                    <label for="laneTimeAdjustment">Signal Time Adjustment</label>
+                    <input type="time" id="signalTimeAdjustment">
+                    <button type="submit">Submit Time Adjustment</button>
                 </form>
             </div>
         </div>

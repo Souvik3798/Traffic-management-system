@@ -25,6 +25,9 @@ class SignalStatus extends Component
 
     public function render()
     {
-        return view('livewire.signal-status');
+        return view('livewire.signal-status', [
+            'lanes' => $this->lanes,
+            'signalNumber' => $this->signalNumber,
+        ]);
     }
 }
