@@ -12,10 +12,10 @@
 
     @if ($route)
         <div class="mt-6 bg-gray-100 p-4 rounded-lg border border-gray-300">
-            @if (strpos($route, 'Hypothetical') !== false)
-                <p class="text-red-500 font-semibold mb-4">⚠️ Note: The route below is hypothetical due to the absence
+            @if (strpos($route, 'Route') !== false)
+                {{-- <p class="text-red-500 font-semibold mb-4">⚠️ Note: The route below is Fastest due to the absence
                     of a
-                    direct route.</p>
+                    direct route.</p> --}}
             @endif
 
             <div class="flex flex-wrap items-center justify-center space-x-2 space-y-2">

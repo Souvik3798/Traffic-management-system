@@ -130,7 +130,7 @@
 <body class="bg-gray-100">
     <!-- Header -->
     <header class="header">
-        <h1 class="text-4xl font-bold">🚦 Traffic Management Input Forms 🚦</h1>
+        <h1 class="text-4xl font-bold">🚦 Traffic Management Input 🚦</h1>
         <a href="{{ url('/') }}" class="home-link">Home</a>
     </header>
 

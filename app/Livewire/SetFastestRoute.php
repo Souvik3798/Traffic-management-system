@@ -70,7 +70,7 @@ class SetFastestRoute extends Component
 
         // No direct route available, create a new hypothetical route (not saving to JSON)
         $newRoute = array_merge($visited, [$destinationSignal]);
-        return "Hypothetical route:" . "\n " . implode(' -> ', $newRoute);
+        return "Route Direction:" . "\n " . implode(' -> ', $newRoute);
     }
 
     public function render()
