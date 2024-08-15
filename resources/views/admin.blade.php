@@ -112,6 +112,18 @@
         .form-group button:hover {
             background-color: #2165b5;
         }
+
+        .guidelines {
+            font-size: 14px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .guidelines h3 {
+            margin-top: 0;
+            font-size: 16px;
+            color: white;
+        }
     </style>
 </head>
 
@@ -127,6 +139,17 @@
             <!-- Vehicle Number -->
             <div class="gradient-bg-1 p-6 rounded-lg shadow-md mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-4">🚗 Vehicle Number</h2>
+
+                <!-- Guidelines Section -->
+                <div class="guidelines">
+                    <h3>Guidelines:</h3>
+                    <ul>
+                        <li>Enter the vehicle number in the format: <strong>AN01A1234</strong>.</li>
+                        <li>Ensure there are no spaces between characters.</li>
+                        <li>The vehicle number should match the registration plate exactly.</li>
+                    </ul>
+                </div>
+
                 <form class="form-group">
                     <label for="vehicleNumber">Vehicle Number</label>
                     <input type="text" id="vehicleNumber" placeholder="e.g., AN01A1234">
@@ -137,6 +160,18 @@
             <!-- Signal and Incoming Lane -->
             <div class="gradient-bg-2 p-6 rounded-lg shadow-md mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-4">🚦 Signal and Incoming Lane</h2>
+
+                <!-- Guidelines Section -->
+                <div class="guidelines">
+                    <h3>Guidelines:</h3>
+                    <ul>
+                        <li>Enter the signal number accurately as per the system records.</li>
+                        <li>Provide the incoming lane number and name, ensuring it corresponds to the correct signal.
+                        </li>
+                        <li>Double-check the lane name for spelling accuracy.</li>
+                    </ul>
+                </div>
+
                 <form class="form-group">
                     <label for="signalNumber">Signal Number</label>
                     <input type="text" id="signalNumber" placeholder="Enter Signal Number">
@@ -155,6 +190,17 @@
             <!-- Signal Number and Address -->
             <div class="gradient-bg-3 p-6 rounded-lg shadow-md mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-4">📍 Signal Number and Address</h2>
+
+                <!-- Guidelines Section -->
+                <div class="guidelines">
+                    <h3>Guidelines:</h3>
+                    <ul>
+                        <li>Enter the signal number associated with the address.</li>
+                        <li>Provide a complete and accurate address to avoid any confusion.</li>
+                        <li>Use standard address format and include landmarks if necessary.</li>
+                    </ul>
+                </div>
+
                 <form class="form-group">
                     <label for="signalAddress">Signal Number</label>
                     <input type="text" id="signalAddress" placeholder="Signal Number">
@@ -167,6 +213,17 @@
             <!-- Lane Number and Signal Time Adjustment -->
             <div class="gradient-bg-1 p-6 rounded-lg shadow-md mb-8">
                 <h2 class="text-2xl font-semibold text-white mb-4">⏲️ Lane Number and Signal Time Adjustment</h2>
+
+                <!-- Guidelines Section -->
+                <div class="guidelines">
+                    <h3>Guidelines:</h3>
+                    <ul>
+                        <li>Enter the lane number that needs the signal time adjustment.</li>
+                        <li>Provide the exact time adjustment required, in hours and minutes.</li>
+                        <li>Ensure the time adjustment is based on traffic flow data or expert recommendations.</li>
+                    </ul>
+                </div>
+
                 <form class="form-group">
                     <label for="laneTimeAdjustment">Lane Number</label>
                     <input type="text" id="laneTimeAdjustment" placeholder="Lane Number">
