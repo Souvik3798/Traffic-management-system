@@ -28,7 +28,7 @@
                 <div class="space-y-3">
                     <div class="flex items-center">
                         <span class="text-green-500 mr-2">🚦</span>
-                        <span class="font-semibold">Signal: </span> {{ $output['signal'] }}
+                        <span class="font-semibold"></span> {{ $output['signal'] }}
                     </div>
                     <div class="flex items-center">
                         <span class="text-blue-500 mr-2">📅</span>

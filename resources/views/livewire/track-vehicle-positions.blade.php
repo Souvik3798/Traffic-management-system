@@ -30,7 +30,7 @@
                         <div class="text-gray-800">
                             <span class="font-semibold">📅 {{ date('d F, Y', strtotime($position['date'])) }}</span> -
                             <span class="text-blue-500">🕒 {{ date('h:i A', strtotime($position['time'])) }}</span> -
-                            <span class="text-red-500">🚦 Signal {{ $position['location'] }}</span>
+                            <span class="text-red-500">🚦{{ $position['location'] }}</span>
                         </div>
                     </li>
                 @endforeach

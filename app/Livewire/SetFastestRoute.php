@@ -14,7 +14,7 @@ class SetFastestRoute extends Component
     public function setFastestRoute()
     {
         // Append "Signal" to the user input for destinationSignal
-        $destinationSignal = "Signal " . $this->destinationSignal;
+        $destinationSignal = $this->destinationSignal;
 
         // Load the vehicle data from JSON
         $vehicleData = json_decode(Storage::disk('public')->get('traffic_management_data.json'), true);

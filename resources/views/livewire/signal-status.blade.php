@@ -11,7 +11,7 @@
     @if (!empty($lanes))
         <div class="mt-6 bg-gray-50 p-5 rounded-lg shadow-inner">
             <h4 class="font-bold text-lg mb-4 flex items-center">
-                🚦 Signal {{ $signalNumber }} Status
+                🚦{{ $signalNumber }} Status
             </h4>
             <ul class="list-disc ml-5 space-y-3">
                 @foreach ($lanes as $lane => $details)
@@ -31,7 +31,7 @@
     @else
         @if ($signalNumber)
             <p class="mt-6 text-red-500 flex items-center">
-                🚦 No data available for Signal {{ $signalNumber }}
+                🚦 No data available for {{ $signalNumber }}
             </p>
         @endif
     @endif
