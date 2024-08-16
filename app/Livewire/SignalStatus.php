@@ -12,12 +12,13 @@ class SignalStatus extends Component
 
     public function search()
     {
+        $signal = 'Signal ' . $this->signalNumber;
         // Load JSON data from the file
         $trafficData = json_decode(Storage::disk('public')->get('traffic-data.json'), true);
 
         // If a specific signal number is provided, filter by that
-        if ($this->signalNumber && isset($trafficData['signals'][$this->signalNumber])) {
-            $this->lanes = $trafficData['signals'][$this->signalNumber]['lanes'];
+        if ($signal && isset($trafficData['signals'][$signal])) {
+            $this->lanes = $trafficData['signals'][$signal]['lanes'];
         } else {
             $this->lanes = [];
         }
@@ -27,7 +28,7 @@ class SignalStatus extends Component
     {
         return view('livewire.signal-status', [
             'lanes' => $this->lanes,
-            'signalNumber' => $this->signalNumber,
+            'signalNumber' => 'Signal ' . $this->signalNumber,
         ]);
     }
 }
