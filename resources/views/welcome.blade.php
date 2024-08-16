@@ -59,8 +59,8 @@
         <h1 class="text-4xl font-bold">🚦 Traffic Management Dashboard 🚦</h1>
         <p class="text-lg">Your comprehensive tool for efficient traffic management</p>
         <div class="flex justify-end py-2">
-            <button style="background-color: #87CEEB; padding-right: 10px;"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Main Data Entry</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onclick="window.location.href='{{ url('/admin') }}'">Master Data Entry</button>
         </div>
     </header>
 
